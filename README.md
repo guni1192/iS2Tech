@@ -1,6 +1,6 @@
 # iS2Tech
 
-技術的知識の蓄積と共有
+技術的知識の蓄積と共有  
 所謂ナレッジマネジメント用のアプリ
 
 ## How to use
@@ -17,7 +17,7 @@
   $ psql
   ```
 
-  ```postgresql
+  ```mysql
   CREATE ROLE platcoders with PASSWORD 'platcoders';
   ALTER ROLE platcoders with LOGIN;
   ```
