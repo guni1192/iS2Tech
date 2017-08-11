@@ -6,10 +6,18 @@
 <a class="waves-effect waves-light btn" href="{% url 'article:post_article' %}">Create New</a>
 
 <ul>
-  {% for item in object_list %}
-  <li><a href="#">{{ item }}</a></li>
-  {% endfor %}
+  <div class="row">
+    {% for item in object_list %}
+    <li>
+      <a class="col s8" href="{% url 'article:detail' item.id %}">{{ item }}</a>
+      <p class="col s2">YYYY/MM/DD<p>
+      <a class="col s1" href="{% url 'article:update' item.id %}">
+        <i class="material-icons">edit</i></a>
+      <a class="col s1" href="{% url 'article:delete' item.id %}">
+        <i class="material-icons">delete</i></a>
+    </li>
+    {% endfor %}
+  </div>
 </ul>
-
 
 {%endblock%}
