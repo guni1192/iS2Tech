@@ -13,13 +13,13 @@
 1. データベースとユーザーを作成する
 
   ```bash
-  $ createdb platcoders
+  $ createdb is2tech
   $ psql
   ```
 
   ```mysql
-  CREATE ROLE platcoders with PASSWORD 'platcoders';
-  ALTER ROLE platcoders with LOGIN;
+  CREATE ROLE is2tech with PASSWORD 'is2tech';
+  ALTER ROLE is2tech with LOGIN;
   ```
 
 2. 仮想環境を用意する
