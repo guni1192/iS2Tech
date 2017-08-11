@@ -5,25 +5,41 @@
 <meta charset="UTF-8">
 <title>{% block title %}My books{% endblock %}</title>
 {% include 'material/includes/material_css.html' %}
+<script src="{% static 'material/js/jquery.js' %}"></script>
 {% include 'material/includes/material_js.html' %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% block extrahead %}{% endblock %}
 </head>
 <body>
   <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">iS2Tech</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Post</a></li>
+   <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">iS2Tech</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{% url 'index'%}">List</a></li>
+        <li><a href="{% url 'article:post_article'%}">Post</a></li>
         <li><a href="#">Bookmarks</a></li>
+        <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{% url 'index'%}">List</a></li>
+        <li><a href="{% url 'article:post_article'%}">Post</a></li>
+        <li><a href="#">Bookmarks</a></li>
+        <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
         <li><a href="#">Logout</a></li>
       </ul>
     </div>
   </nav>
+
+  {% block extrahead %}{% endblock %}
+
   <div class="container">
     {% block content %}
       {{ content }}
     {% endblock %}
   </div>
+  <script>
+    $(".button-collapse").sideNav();
+  </script>
 </body>
 </html>
