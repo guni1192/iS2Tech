@@ -1,0 +1,13 @@
+{% extends 'article/base.html'%}
+
+{% block title %} 記事リスト {%endblock%}
+
+{% block content %}
+  <form method="post">
+  {% csrf_token %}
+  <table>
+    {{ form }}
+  </table>
+  <input type="submit">
+</form>
+{%endblock%}
