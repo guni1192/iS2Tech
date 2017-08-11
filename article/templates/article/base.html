@@ -4,13 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <title>{% block title %}My books{% endblock %}</title>
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% block extrahead %}{% endblock %}
 </head>
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="/" class="brand-logo">iS2Tech</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#">Post</a></li>
         <li><a href="#">Bookmarks</a></li>

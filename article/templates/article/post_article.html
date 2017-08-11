@@ -1,6 +1,7 @@
 {% extends 'article/base.html'%}
+{% load material_form %}
 
-{% block title %} 記事リスト {%endblock%}
+{% block title %} 記事を投稿する{%endblock%}
 
 {% block content %}
   <form method="post">
@@ -8,6 +9,6 @@
   <table>
     {{ form }}
   </table>
-  <input type="submit">
+  <input type="submit" class="btn">
 </form>
 {%endblock%}
