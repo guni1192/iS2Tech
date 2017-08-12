@@ -19,14 +19,14 @@
         <li><a href="{% url 'article:post_article'%}">Post</a></li>
         <li><a href="#">Bookmarks</a></li>
         <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="{% url 'index'%}">List</a></li>
         <li><a href="{% url 'article:post_article'%}">Post</a></li>
         <li><a href="#">Bookmarks</a></li>
         <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
       </ul>
     </div>
   </nav>
