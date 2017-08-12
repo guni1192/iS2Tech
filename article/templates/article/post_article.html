@@ -4,6 +4,9 @@
 {% block title %} 記事を投稿する{%endblock%}
 
 {% block content %}
+  <style>
+    textarea#id_detail { height: 300px; }
+  </style>
   <form method="post">
   {% csrf_token %}
   <table>

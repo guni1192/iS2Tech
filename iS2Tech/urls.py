@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^article/', include('article.urls', namespace='article')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ]

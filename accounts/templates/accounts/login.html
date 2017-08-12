@@ -1,0 +1,21 @@
+{% extends "article/base.html" %}
+
+{% block content %}
+
+<form action="{% url 'accounts:login' %}" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <table>
+    <tr>
+      <td>{{ form.username.label_tag }}</td>
+      <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.password.label_tag }}</td>
+      <td>{{ form.password }}</td>
+    </tr>
+  </table>
+  <input type='submit' value='login' />
+  <input type='hidden' name='next' value='{{ next }}' />
+</form>
+{% endblock %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'article',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
+# Login時のURL
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'
+# Login後のURL
+LOGOUT_REDIRECT_URL = '/accounts/login'

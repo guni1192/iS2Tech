@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Article
+from .forms import ArticleModelForm
 
 
 class IndexView(ListView):
@@ -10,8 +11,7 @@ class IndexView(ListView):
 
 
 class PostArticleView(CreateView):
-    model = Article
-    fields = ('title', 'detail')
+    form_class = ArticleModelForm
     template_name = 'article/post_article.html'
     success_url = '/article/post'
 
@@ -22,12 +22,12 @@ class ArticleDetailView(DetailView):
 
 
 class UpdateArticleView(UpdateView):
-    model = Article
+    form_class = ArticleModelForm
     template_name = 'article/post_article.html'
-    fields = ('title', 'detail')
 
     def get_success_url(self):
         return reverse('article:update', args=(self.object.id,))
+
 
 class DeleteArticleView(DeleteView):
     model = Article
