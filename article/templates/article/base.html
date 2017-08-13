@@ -3,7 +3,7 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 <head>
 <meta charset="UTF-8">
-<title>{% block title %}My books{% endblock %}</title>
+<title>{% block title %}{% endblock %}</title>
 {% include 'material/includes/material_css.html' %}
 <script src="{% static 'material/js/jquery.js' %}"></script>
 {% include 'material/includes/material_js.html' %}
@@ -38,8 +38,35 @@
       {{ content }}
     {% endblock %}
   </div>
-  <script>
+
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">iS2Tech</h5>
+          <p class="grey-text text-lighten-4">
+            I will support your knowledge management.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Article Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="{% url 'article:knowledge'%}">knowledge</a></li>
+            <li><a class="grey-text text-lighten-3" href="{% url 'article:questions'%}">questions</a></li>
+            <li><a class="grey-text text-lighten-3" href="{% url 'article:products'%}">products</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2014 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+    </footer> <script>
     $(".button-collapse").sideNav();
-  </script>
-</body>
+    </script>
+  </body>
 </html>

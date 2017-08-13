@@ -10,7 +10,25 @@ from .forms import ArticleModelForm
 @method_decorator(login_required, name='dispatch')
 class IndexView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(is_publish=True)
+    model = Article
+
+
+@method_decorator(login_required, name='dispatch')
+class KnowledgeListView(ListView):
+    template_name = 'article/index.html'
+    queryset = Article.objects.filter(article_types='Knowledge')
+
+
+@method_decorator(login_required, name='dispatch')
+class ProductsListView(ListView):
+    template_name = 'article/index.html'
+    queryset = Article.objects.filter(article_types='Product')
+
+
+@method_decorator(login_required, name='dispatch')
+class QuestionsListView(ListView):
+    template_name = 'article/index.html'
+    queryset = Article.objects.filter(article_types='Question')
 
 
 @method_decorator(login_required, name='dispatch')
