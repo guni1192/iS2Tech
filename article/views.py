@@ -10,28 +10,33 @@ from .forms import ArticleModelForm
 @method_decorator(login_required, name='dispatch')
 class IndexView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(is_publish=True).order_by('created_date', 'title')
+    queryset = Article.objects \
+        .filter(is_publish=True) \
+        .order_by('created_date', 'title')
 
 
 @method_decorator(login_required, name='dispatch')
 class KnowledgeListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(is_publish=True,
-                                      article_types='Knowledge')
+    queryset = Article.objects \
+        .filter(is_publish=True, article_types='Knowledge') \
+        .order_by('created_date', 'title')
 
 
 @method_decorator(login_required, name='dispatch')
 class ProductsListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(is_publish=True,
-                                      article_types='Product')
+    queryset = Article.objects \
+        .filter(is_publish=True, article_types='Product') \
+        .order_by('created_date', 'title')
 
 
 @method_decorator(login_required, name='dispatch')
 class QuestionsListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(is_publish=True,
-                                      article_types='Question')
+    queryset = Article.objects \
+        .filter(is_publish=True, article_types='Question') \
+        .order_by('created_date', 'title')
 
 
 @method_decorator(login_required, name='dispatch')
@@ -39,6 +44,10 @@ class PostArticleView(CreateView):
     form_class = ArticleModelForm
     template_name = 'article/post_article.html'
     success_url = '/article/post'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -55,6 +64,10 @@ class UpdateArticleView(UpdateView):
 
     def get_success_url(self):
         return reverse('article:update', args=(self.object.id,))
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 @method_decorator(login_required, name='dispatch')

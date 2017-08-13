@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Article(models.Model):
@@ -17,6 +18,9 @@ class Article(models.Model):
 
     is_publish = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               null=True, blank=True)
 
     def __str__(self):
         return self.title
