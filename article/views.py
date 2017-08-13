@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
@@ -10,25 +10,28 @@ from .forms import ArticleModelForm
 @method_decorator(login_required, name='dispatch')
 class IndexView(ListView):
     template_name = 'article/index.html'
-    model = Article
+    queryset = Article.objects.filter(is_publish=True).order_by('created_date', 'title')
 
 
 @method_decorator(login_required, name='dispatch')
 class KnowledgeListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(article_types='Knowledge')
+    queryset = Article.objects.filter(is_publish=True,
+                                      article_types='Knowledge')
 
 
 @method_decorator(login_required, name='dispatch')
 class ProductsListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(article_types='Product')
+    queryset = Article.objects.filter(is_publish=True,
+                                      article_types='Product')
 
 
 @method_decorator(login_required, name='dispatch')
 class QuestionsListView(ListView):
     template_name = 'article/index.html'
-    queryset = Article.objects.filter(article_types='Question')
+    queryset = Article.objects.filter(is_publish=True,
+                                      article_types='Question')
 
 
 @method_decorator(login_required, name='dispatch')

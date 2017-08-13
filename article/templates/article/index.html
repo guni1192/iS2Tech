@@ -9,7 +9,7 @@
     {% for item in object_list %}
     <li>
       <a class="col s8" href="{% url 'article:detail' item.id %}">{{ item }}</a>
-      <p class="col s2">YYYY/MM/DD<p>
+      <p class="col s2">{{ item.created_date }}<p>
       <a class="col s1" href="{% url 'article:update' item.id %}">
         <i class="material-icons">edit</i></a>
       <a class="col s1" href="{% url 'article:delete' item.id %}">
@@ -18,5 +18,4 @@
     {% endfor %}
   </div>
 </ul>
-
 {%endblock%}

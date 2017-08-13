@@ -4,7 +4,6 @@
 {% block title %} {{ object }}{%endblock%}
 
 {% block content %}
-<a class="waves-effect waves-light btn" href="{% url 'article:post_article' %}">Create New</a>
 
 <h2> {{ object }}</h2>
 <section>{{ object.detail | markdown }}</section>

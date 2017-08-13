@@ -8,9 +8,14 @@
     textarea#id_detail { height: 300px; }
   </style>
   <form method="post">
+  {{ form.non_field_errors }}
   {% csrf_token %}
   <table>
-    {{ form }}
+    {{ form.title }}
+    {{ form.detail }}
+    {{ form.article_types }}
+    {{ form.is_publish }}
+    <label for="{{ form.is_publish.id_for_label }}">Publish</label>
   </table>
   <input type="submit" class="btn">
 </form>
