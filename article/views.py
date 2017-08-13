@@ -9,8 +9,8 @@ from .forms import ArticleModelForm
 
 @method_decorator(login_required, name='dispatch')
 class IndexView(ListView):
-    model = Article
     template_name = 'article/index.html'
+    queryset = Article.objects.filter(is_publish=True)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -29,6 +29,7 @@ class ArticleDetailView(DetailView):
 @method_decorator(login_required, name='dispatch')
 class UpdateArticleView(UpdateView):
     form_class = ArticleModelForm
+    model = Article
     template_name = 'article/post_article.html'
 
     def get_success_url(self):
@@ -39,4 +40,4 @@ class UpdateArticleView(UpdateView):
 class DeleteArticleView(DeleteView):
     model = Article
     template_name = 'article/article_confirm_delete.html'
-    success_url = '/article'
+    success_url = '/'
