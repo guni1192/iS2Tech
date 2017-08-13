@@ -1,11 +1,15 @@
 {% extends 'article/base.html'%}
-{% load markdown_deux_tags %}
 
 {% block title %} {{ object }}{%endblock%}
 
 {% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_markdown.css' %}" />
 
-<h2> {{ object }}</h2>
-<section>{{ object.detail | markdown }}</section>
+<h1> {{ object }}</h1>
 
+{% load md2 %}
+<section>
+  {{ object.detail }}
+</section>
 {%endblock%}

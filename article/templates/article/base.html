@@ -7,6 +7,7 @@
 {% include 'material/includes/material_css.html' %}
 <script src="{% static 'material/js/jquery.js' %}"></script>
 {% include 'material/includes/material_js.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_material.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -31,25 +32,28 @@
     </div>
   </nav>
 
+  <header></header>
+
   {% block extrahead %}{% endblock %}
 
-  <div class="container">
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
-
+  <main>
+    <div class="container">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </main>
 
   <footer class="page-footer">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
+        <div class="col l4 s12">
           <h5 class="white-text">iS2Tech</h5>
           <p class="grey-text text-lighten-4">
             I will support your knowledge management.
           </p>
         </div>
-        <div class="col l4 offset-l2 s12">
+        <div class="col l3 offset-l1 s12">
           <h5 class="white-text">Article Links</h5>
           <ul>
             <li><a class="grey-text text-lighten-3" href="{% url 'article:knowledge'%}">knowledge</a></li>
@@ -57,7 +61,7 @@
             <li><a class="grey-text text-lighten-3" href="{% url 'article:products'%}">products</a></li>
           </ul>
         </div>
-        <div class="col l4 offset-l2 s12">
+        <div class="col l3 offset-l1 s12">
           <h5 class="white-text">External links</h5>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/guni973/iS2Tech">GitHub</a></li>
