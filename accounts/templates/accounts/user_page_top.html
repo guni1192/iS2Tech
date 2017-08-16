@@ -1,0 +1,16 @@
+{% extends 'article/base.html'%}
+
+{% block title %} {{ object }} {% endblock %}
+
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_markdown.css' %}" />
+
+<h1> {{ object }}</h1>
+<ul>
+  <li><a href="{% url 'accounts:pwd_change'%}">Change your password</a></li>
+  <li><a href="{% url 'accounts:update' object.id %}">Change your info</a></li>
+  <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
+</ul>
+
+{%endblock%}

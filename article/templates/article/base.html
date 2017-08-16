@@ -18,28 +18,39 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="{% url 'index'%}">List</a></li>
         <li><a href="{% url 'article:post_article'%}">Post</a></li>
-        <li><a href="#">Bookmarks</a></li>
         <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'accounts:mypage' user.id %}">MyPage</a></li>
         <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login'%}">Login</a></li>
+        <li><a href="{% url 'accounts:create' %}">Registor</a></li>
+        {% endif %}
+ 
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="{% url 'index'%}">List</a></li>
         <li><a href="{% url 'article:post_article'%}">Post</a></li>
-        <li><a href="#">Bookmarks</a></li>
         <li><a href="{% url 'admin:index' %}">Admin Page</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'accounts:mypage' user.id %}">MyPage</a></li>
         <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login'%}">Login</a></li>
+        <li><a href="{% url 'accounts:create' %}">Registor</a></li>
+        {% endif %}
+ 
       </ul>
     </div>
   </nav>
-
-  <header></header>
+ <header></header>
 
   {% block extrahead %}{% endblock %}
 
   <main>
     <div class="container">
       {% block content %}
-        {{ content }}
+      {{ content }}
       {% endblock %}
     </div>
   </main>
