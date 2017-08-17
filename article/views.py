@@ -2,45 +2,41 @@ from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from .models import Article
 from .forms import ArticleModelForm
 
 
-@method_decorator(login_required, name='dispatch')
-class IndexView(ListView):
+class IndexView(LoginRequiredMixin, ListView):
     template_name = 'article/index.html'
     queryset = Article.objects \
         .filter(is_publish=True) \
         .order_by('created_date', 'title')
 
 
-@method_decorator(login_required, name='dispatch')
-class KnowledgeListView(ListView):
+class KnowledgeListView(LoginRequiredMixin, ListView):
     template_name = 'article/index.html'
     queryset = Article.objects \
         .filter(is_publish=True, article_types='Knowledge') \
         .order_by('created_date', 'title')
 
 
-@method_decorator(login_required, name='dispatch')
-class ProductsListView(ListView):
+class ProductsListView(LoginRequiredMixin, ListView):
     template_name = 'article/index.html'
     queryset = Article.objects \
         .filter(is_publish=True, article_types='Product') \
         .order_by('created_date', 'title')
 
 
-@method_decorator(login_required, name='dispatch')
-class QuestionsListView(ListView):
+class QuestionsListView(LoginRequiredMixin, ListView):
     template_name = 'article/index.html'
     queryset = Article.objects \
         .filter(is_publish=True, article_types='Question') \
         .order_by('created_date', 'title')
 
 
-@method_decorator(login_required, name='dispatch')
-class PostArticleView(CreateView):
+class PostArticleView(LoginRequiredMixin, CreateView):
     form_class = ArticleModelForm
     template_name = 'article/post_article.html'
     success_url = '/article/post'
@@ -50,14 +46,12 @@ class PostArticleView(CreateView):
         return super().form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class ArticleDetailView(DetailView):
+class ArticleDetailView(LoginRequiredMixin, DetailView):
     model = Article
     template_name = 'article/detail.html'
 
 
-@method_decorator(login_required, name='dispatch')
-class UpdateArticleView(UpdateView):
+class UpdateArticleView(LoginRequiredMixin, UpdateView):
     form_class = ArticleModelForm
     model = Article
     template_name = 'article/post_article.html'
@@ -70,8 +64,7 @@ class UpdateArticleView(UpdateView):
         return super().form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class DeleteArticleView(DeleteView):
+class DeleteArticleView(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'article/article_confirm_delete.html'
     success_url = '/'

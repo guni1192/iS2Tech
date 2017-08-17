@@ -29,4 +29,5 @@ urlpatterns = [
         ),
     url(r'^(?P<pk>[0-9]+)/mypage/$',
         UserMyPageView.as_view(), name='mypage'),
+
 ]
