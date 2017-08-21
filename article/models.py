@@ -10,6 +10,7 @@ class Article(models.Model):
     types = (('Knowledge', 'Knowledge'),
              ('Product', 'Product'),
              ('Question', 'Question'))
+
     article_types = models.CharField(
         max_length=10,
         choices=types,

@@ -7,6 +7,13 @@
   <style>
     textarea#id_detail { height: 300px; }
   </style>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   {{ form.non_field_errors }}
   <form method="post">
     {% csrf_token %}
@@ -23,6 +30,6 @@
     {{ form.is_publish.label_tag }}
     <p>Publish: 外部に公開する</p>
 
-  <input type="submit" class="btn">
-</form>
-{%endblock%}
+    <input type="submit" class="btn">
+  </form>
+  {%endblock%}
