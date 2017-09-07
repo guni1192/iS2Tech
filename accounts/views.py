@@ -26,3 +26,4 @@ class UpdateAccountView(UpdateView):
 class UserMyPageView(DetailView):
     model = User
     template_name = 'accounts/user_page_top.html'
+

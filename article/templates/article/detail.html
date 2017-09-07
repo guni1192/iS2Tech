@@ -6,9 +6,9 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom_markdown.css' %}" />
 
-<h1> {{ object }}</h1>
+<h2> {{ object }}</h2>
 
 <section>
-  {{ object.detail }}
+  {{ object.detail | linebreaks }}
 </section>
 {%endblock%}

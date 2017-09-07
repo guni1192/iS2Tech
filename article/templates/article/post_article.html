@@ -4,32 +4,42 @@
 {% block title %} 記事を投稿する{%endblock%}
 
 {% block content %}
-  <style>
-    textarea#id_detail { height: 300px; }
-  </style>
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {{ form.non_field_errors }}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.title.label_tag }}
-    {{ form.title }}
+<style>
+  textarea#id_detail { height: 300px; }
+</style>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{{ form.non_field_errors }}
+<div class="row">
+  <div id='editor'>
+    <form method="post" class="col s6">
+      {% csrf_token %}
+      {{ form.title.label_tag }}
+      {{ form.title }}
 
-    {{ form.detail.label_tag }}
-    {{ form.detail }}
+      {{ form.detail.label_tag }}
+      {{ form.detail }}
 
-    {{ form.article_types }}
-    {{ form.article_types.label_tag }}
+      {{ form.article_types }}
+      {{ form.article_types.label_tag }}
 
-    {{ form.is_publish }}
-    {{ form.is_publish.label_tag }}
-    <p>Publish: 外部に公開する</p>
+      {{ form.is_publish }}
+      {{ form.is_publish.label_tag }}
+      <p>Publish: 外部に公開する</p>
 
-    <input type="submit" class="btn">
-  </form>
-  {%endblock%}
+      <input type="submit" class="btn">
+    </form>
+
+    <div id='md-preview' class="col s6" v-html='md_editor | marked'></div>
+  </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>
+<script src="http://localhost:8000/static/js/editor.js"></script>
+
+{%endblock%}

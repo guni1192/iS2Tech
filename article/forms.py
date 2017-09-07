@@ -11,3 +11,11 @@ class ArticleModelForm(forms.ModelForm):
             'article_types',
             'is_publish',
             )
+        widgets = {
+            'detail': forms.Textarea(attrs={
+                'id': 'md_editor',
+                'v-model': 'md_editor',
+                'debounce': '100'
+            }),
+        }
+
